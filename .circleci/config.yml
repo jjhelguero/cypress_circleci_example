@@ -19,6 +19,8 @@ workflows:
           # this avoids installing same dependencies 10 times
           requires:
             - cypress/install
-          parallel: true # split all specs across machines
+          record: true
+          parallel: true
           parallelism: 2
+          group: 2 machines
           store_artifacts: true # stores cypress/screenshots and cypress/vidoes artifacts
