@@ -15,7 +15,6 @@ workflows:
       - cypress/install
       - cypress/run:
           # this avoids installing same dependencies 10 times
-          no-workspace: true #skips persisting to workspace
           requires:
             - cypress/install
           record: true
@@ -24,3 +23,4 @@ workflows:
           group: 2 machines
           store_artifacts: true # stores cypress/screenshots and cypress/vidoes artifacts
           command: npm run ci:run
+          no-workspace: true #skips persisting to workspace
