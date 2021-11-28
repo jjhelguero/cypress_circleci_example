@@ -16,4 +16,4 @@ workflows:
 
           tags: CircleCI
           store_artifacts: true
-#          command: npm run ci:run
+          command: npm run ci:run
