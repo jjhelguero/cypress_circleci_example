@@ -4,19 +4,17 @@ orbs:
 workflows:
    build:
     jobs:
-#      # first get the source code and install npm dependencies
-#      - cypress/install
+      # first get the source code and install npm dependencies
+      - cypress/install
       - cypress/run:
+          name: Run Cypress tests
           # this avoids installing same dependencies 10 times
-#          requires:
-#            - cypress/install
-          # Cypress dashboard config
+          requires:
+            - cypress/install
+          no-workspace: true
           record: true
-          parallel: true
-          parallelism: 2
-          group: 2 machines
+          group: 1 machine
 
-          tags: CircleCI # circleCi tag
-          store_artifacts: true # stores cypress/screenshots and cypress/videos artifacts
-          command: npm run ci:run # run command using record key for cypress dashboard
-          no-workspace: true #skips persisting to workspace
+          tags: CircleCI
+          store_artifacts: true
+#          command: npm run ci:run
