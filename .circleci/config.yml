@@ -10,10 +10,11 @@ workflows:
           name: Run Cypress tests
           requires:
             - Install all dependencies
+          parallel: true
+          parallelism: 2
           no-workspace: true
           record: true
-          group: 1 machine
-
+          group: All tests
           tags: CircleCI
           store_artifacts: true
           command: npm run ci:run
