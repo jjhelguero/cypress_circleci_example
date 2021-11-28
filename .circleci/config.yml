@@ -1,26 +1,22 @@
-# This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
 version: 2.1
-
-# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
-# See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
   cypress: cypress-io/cypress@1
-
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
    build:
     jobs:
-      # first get the source code and install npm dependencies
-      - cypress/install
+#      # first get the source code and install npm dependencies
+#      - cypress/install
       - cypress/run:
           # this avoids installing same dependencies 10 times
-          requires:
-            - cypress/install
+#          requires:
+#            - cypress/install
+          # Cypress dashboard config
           record: true
           parallel: true
           parallelism: 2
           group: 2 machines
-          store_artifacts: true # stores cypress/screenshots and cypress/vidoes artifacts
-          command: npm run ci:run
+
+          tags: CircleCI # circleCi tag
+          store_artifacts: true # stores cypress/screenshots and cypress/videos artifacts
+          command: npm run ci:run # run command using record key for cypress dashboard
           no-workspace: true #skips persisting to workspace
