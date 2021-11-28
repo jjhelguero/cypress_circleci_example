@@ -4,13 +4,12 @@ orbs:
 workflows:
    build:
     jobs:
-      # first get the source code and install npm dependencies
-      # - cypress/install
+      - cypress/install:
+           name: Install all dependencies
       - cypress/run:
           name: Run Cypress tests
-          # this avoids installing same dependencies 10 times
           requires:
-            - cypress/install
+            - Install all dependencies
           no-workspace: true
           record: true
           group: 1 machine
