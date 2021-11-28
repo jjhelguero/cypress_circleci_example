@@ -12,11 +12,11 @@ workflows:
    build:
     jobs:
       # first get the source code and install npm dependencies
-      - cypress/install
+      # - cypress/install
       - cypress/run:
           # this avoids installing same dependencies 10 times
-          requires:
-            - cypress/install
+          # requires:
+          #   - cypress/install
           record: true
           parallel: true
           parallelism: 2
