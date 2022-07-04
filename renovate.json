@@ -6,8 +6,7 @@
     {
       "packagePatterns": ["*"],
       "excludePackagePatterns": [
-        "cypress",
-        "@bahmutov/cy-api"
+        "cypress"
       ],
       "enabled": false
     }
