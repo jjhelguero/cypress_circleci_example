@@ -2,6 +2,7 @@
 
 describe('with a checked task', () => {
     beforeEach(() => {
+        cy.visit('https://example.cypress.io/todo')
         cy.contains('Pay electric bill')
             .parent()
             .find('input[type=checkbox]')
