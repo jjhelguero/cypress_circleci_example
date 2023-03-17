@@ -1,20 +1,9 @@
-version: 2.1
+version: '2.1'
 orbs:
-  cypress: cypress-io/cypress@3.0.0
+  cypress: cypress-io/cypress@3
 workflows:
-   build:
+  use-my-orb:
     jobs:
-      - cypress/install:
-           name: Install all dependencies
       - cypress/run:
-          name: Run Cypress tests
-          requires:
-            - Install all dependencies
-          parallel: true
           parallelism: 2
-          no-workspace: true
-          record: true
-          group: All tests
-          tags: CircleCI
-          store_artifacts: true
-          command: npm run ci:run
+          cypress-command: npm run ci:run
